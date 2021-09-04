@@ -2,8 +2,23 @@
 <h2>Country Details</h2>
 
 <div *ngIf="country">
-  <h3>{{ country.name }}</h3>
-  <h4>{{ country.region }}</h4>
-  <p>{{ country.capital }}</p>
+  <img src={{country.flag}}/> 
+  <h3>name: {{ country.name }}</h3>
+  <h4>region: {{ country.region }}</h4>
+  <h4> capital: {{ country.capital }}</h4>
+  
+  <h4> adjustcent countries: 
+    <div 
+      *ngFor="let border of country.borders"
+      (click)="ngOnInit()"
+    >
+      <a
+      [title]="border + ' details'"
+      [routerLink]="['/countries', border]"
+      >
+          {{border}}
+      </a>
+    </div>
 
+  </h4>
 </div>

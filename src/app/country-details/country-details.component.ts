@@ -19,7 +19,11 @@ export class CountryDetailsComponent implements OnInit {
   country: Country= {name :"",
    region :"",
    capital :"",
-   population :0};
+   population :0,
+   flag:"",
+   borders:[],
+   alpha3Code:""
+   };
 
   constructor(
     private route: ActivatedRoute,
@@ -37,6 +41,16 @@ export class CountryDetailsComponent implements OnInit {
       console.log(this.country)
     })
     
+  }
+
+
+  getOfficialCountryName(selectedCountry:string){
+    this.dataService.getCountryList()
+    .subscribe(data=>{
+      const extraction = data.find(country=>country.alpha3Code === selectedCountry)
+      return extraction
+
+    })
   }
 
 }

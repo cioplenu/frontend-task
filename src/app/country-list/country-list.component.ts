@@ -11,7 +11,8 @@ import { DataService } from '../data.service';
 export class CountryListComponent implements OnInit {
 
   countries$: Country[] =[];
-
+  dummyCountries$: Country[] = [];
+  
   constructor(
     private dataService:DataService
   ) { }
@@ -20,10 +21,19 @@ export class CountryListComponent implements OnInit {
     console.log(this.dataService.getCountryList().subscribe(data => this.countries$ = data))
 
     return this.dataService.getCountryList()
-    .subscribe(data => this.countries$ = data)
-    
+    .subscribe(data => {
+    this.countries$ = data;
+    this.dummyCountries$ = data
+    })
   }
 
- 
+ sort(region:string){
+    console.log(this.countries$.filter(country=>country.region===region))
+    
+    const filiteredCountryList = this.dummyCountries$.filter(country=>country.region===region)
+    this.countries$ = filiteredCountryList
+  //  return this.dataService.getCountryList()
+  //   .subscribe(data => this.countries$ = data.filter(x=>x.region = region))
+ }
 
 }

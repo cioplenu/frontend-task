@@ -1,0 +1,12 @@
+<!-- <p>country-list works!</p> -->
+  <div *ngFor="let country of countries$" style="text-align:center">
+
+    <h2 routerLinkActive="active current" >
+      <a
+        [title]="country.name + ' details'"
+        [routerLink]="['/countries', country.name]">
+        {{country.name}} - {{country.region}}
+      </a>
+    </h2>
+
+  </div>

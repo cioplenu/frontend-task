@@ -1,0 +1,60 @@
+<!-- <p>country-list works!</p> -->
+<button (click)="sort('All')">
+  All
+</button>
+<button (click)="sort('Asia')">
+  Asia
+</button>
+<button (click)="sort('Europe')">
+  Europe
+</button>
+<button (click)="sort('Africa')">
+  Africa
+</button>
+<button (click)="sort('Oceania')">
+  Oceania
+</button>
+<table>
+    <tr>
+      <th>Country</th>
+      <th>Region</th>
+      <th>Population</th>
+      <th>Capital</th>
+      <th>adjustcent countries</th>
+    </tr>
+    <tr *ngFor="let country of countries$" style="text-align:center">
+        <td>
+            <a
+              [title]="country.name + ' details'"
+              [routerLink]="['/countries', country.name]">
+              {{country.name}}
+            </a>
+        </td>
+        <td>
+          {{country.region}}
+        </td>
+        <td>
+          {{country.population}}
+        </td>
+        <td>
+          {{country.capital}}
+        </td>
+        <td>
+          {{country.borders.length}}
+        </td>
+    </tr>
+
+</table>
+
+<!-- <div *ngFor="let country of countries$" style="text-align:center">
+
+    <h2 routerLinkActive="active current" >
+      <
+      <a
+        [title]="country.name + ' details'"
+        [routerLink]="['/countries', country.name]">
+        {{country.name}} - {{country.region}} 
+      </a>
+    </h2>
+
+  </div> -->
